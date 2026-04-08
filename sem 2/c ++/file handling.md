@@ -285,3 +285,262 @@
 ---
 
 **Total Points: 9**
+
+
+**Title: C++ Stream Manipulators: setw(), setprecision(), setfill(), setiosflags(), resetiosflags()**
+
+---
+
+## 1. Formatting Width and Precision
+
+1. **Apply setw to control output field width**  
+    `setw()` sets the number of characters used to display output.
+    
+2. **Adjust setprecision to control decimal precision display**  
+    `setprecision()` defines the number of digits for floating-point values.
+    
+3. **Ensure formatted alignment using width and precision together**  
+    Both manipulators help in structured and aligned output formatting.
+    
+
+**Recall Chain:**  
+**Apply → Adjust → Ensure**
+
+---
+
+## 2. Filling and Padding Control
+
+4. **Use setfill to specify padding character for output**  
+    `setfill()` sets the character used to fill empty spaces.
+    
+5. **Combine setfill with setw for formatted output spacing**  
+    It works with `setw()` to fill unused width positions.
+    
+6. **Maintain consistent formatting across displayed output fields**  
+    It ensures uniform appearance in printed data.
+    
+
+**Recall Chain:**  
+**Use → Combine → Maintain**
+
+---
+
+## 3. Flag Control Manipulators
+
+7. **Invoke setiosflags to enable specific format flags**  
+    `setiosflags()` is used to set formatting flags like `ios::left`, `ios::right`.
+    
+8. **Reset resetiosflags to disable previously set flags**  
+    `resetiosflags()` clears the specified format flags.
+    
+9. **Control output style dynamically using flag manipulation**  
+    These manipulators allow flexible formatting control during execution.
+    
+
+**Recall Chain:**  
+**Invoke → Reset → Control**
+
+---
+
+**Total Points: 9**
+
+
+**Title: Creating Manipulators in C++**
+
+---
+
+## 1. Concept of User-Defined Manipulators
+
+1. **Define manipulators as functions modifying stream behavior**  
+    Manipulators are special functions that change the format or behavior of I/O streams.
+    
+2. **Differentiate user-defined manipulators from built-in ones**  
+    Custom manipulators are created by programmers to extend formatting control.
+    
+3. **Establish purpose in simplifying repeated formatting operations**  
+    They help reuse formatting logic across multiple output statements.
+    
+
+**Recall Chain:**  
+**Define → Differentiate → Establish**
+
+---
+
+## 2. Creating Simple Manipulator (Without Arguments)
+
+4. **Declare function returning reference to output stream**  
+    A manipulator must return `ostream&` to allow chaining.
+    
+5. **Implement formatting logic inside manipulator function body**  
+    The function modifies the stream (e.g., inserting newline or text).
+    
+6. **Return modified stream to support chaining operations**  
+    Returning the stream ensures compatibility with `<<` operator.
+    
+
+**Recall Chain:**  
+**Declare → Implement → Return**
+
+**Example:**
+
+```cpp
+#include<iostream>
+using namespace std;
+
+ostream& newline(ostream& os) {
+    os << "\n---\n";
+    return os;
+}
+
+int main() {
+    cout << "Hello" << newline << "World";
+    return 0;
+}
+```
+
+---
+
+## 3. Creating Parameterized Manipulator
+
+7. **Define class or function accepting parameters for customization**  
+    Parameterized manipulators require arguments for flexible behavior.
+    
+8. **Use operator overloading to pass arguments into manipulator**  
+    A helper function or class is used to handle parameters.
+    
+9. **Enable flexible formatting through reusable custom manipulators**  
+    They allow dynamic formatting like spacing or indentation.
+    
+
+**Recall Chain:**  
+**Define → Use → Enable**
+
+---
+
+**Total Points: 9**
+
+
+**Title: Syntax and Use of getline() and write() Functions in C++**
+
+---
+
+## 1. getline() Function
+
+1. **Define getline as function for reading entire line input**  
+    `getline()` is used to read a complete line of text including spaces.
+    
+2. **Specify syntax using istream object and string variable**  
+    Syntax:
+    
+
+```cpp
+getline(cin, str);
+```
+
+3. **Utilize function to handle multi-word string inputs effectively**  
+    It is useful when input contains spaces which `cin` cannot handle directly.
+    
+
+**Recall Chain:**  
+**Define → Specify → Utilize**
+
+---
+
+## 2. write() Function
+
+4. **Define write as function for binary output operations**  
+    `write()` is used to write raw data (bytes) to output streams.
+    
+5. **Describe syntax using ostream object and character buffer**  
+    Syntax:
+    
+
+```cpp
+cout.write(char_pointer, size);
+```
+
+6. **Apply function to write fixed-size data efficiently**  
+    It is commonly used for binary file handling.
+    
+
+**Recall Chain:**  
+**Define → Describe → Apply**
+
+---
+
+## 3. Practical Usage Difference
+
+7. **Differentiate getline for text input and write for binary output**  
+    `getline()` reads formatted text, while `write()` outputs raw binary data.
+    
+8. **Relate getline with input streams and write with output streams**  
+    `getline()` uses `istream`, whereas `write()` uses `ostream`.
+    
+9. **Ensure appropriate function selection based on data type**  
+    Choice depends on whether text or binary data is handled.
+    
+
+**Recall Chain:**  
+**Differentiate → Relate → Ensure**
+
+---
+
+**Total Points: 9**
+
+
+**Title: Difference Between Manipulators and ios Functions in C++**
+
+---
+
+## 1. Concept and Definition
+
+1. **Define manipulators as functions modifying stream formatting directly**  
+    Manipulators are special functions used with `<<` or `>>` to format I/O.
+    
+2. **Describe ios functions as member functions controlling stream state**  
+    ios functions belong to stream classes and modify internal flags.
+    
+3. **Differentiate usage through direct insertion versus function calling**  
+    Manipulators are inserted in streams, while ios functions are called explicitly.
+    
+
+**Recall Chain:**  
+**Define → Describe → Differentiate**
+
+---
+
+## 2. Usage and Syntax
+
+4. **Apply manipulators using insertion operator within stream expressions**  
+    Example: `cout << setw(10) << x;`
+    
+5. **Invoke ios functions using dot operator on stream objects**  
+    Example: `cout.setf(ios::left);`
+    
+6. **Compare syntax simplicity between inline manipulators and function calls**  
+    Manipulators provide concise syntax, whereas ios functions are more explicit.
+    
+
+**Recall Chain:**  
+**Apply → Invoke → Compare**
+
+---
+
+## 3. Functionality and Flexibility
+
+7. **Provide manipulators for common formatting operations easily**  
+    They are convenient for tasks like width, precision, and alignment.
+    
+8. **Allow ios functions to control advanced formatting and flags**  
+    ios functions give deeper control over stream behavior.
+    
+9. **Ensure combined usage for complete stream formatting control**  
+    Both can be used together for flexible and powerful formatting.
+    
+
+**Recall Chain:**  
+**Provide → Allow → Ensure**
+
+---
+
+**Total Points: 9**
